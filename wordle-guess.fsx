@@ -6,12 +6,10 @@ let wordleGuess guess solution =
     let sharedLetters = Set.intersect (Set.ofSeq guess) (Set.ofSeq solution)
 
     let convertLetter g s =
-        if g = s then
-            "🟩"
-        elif Set.contains g sharedLetters then
-            "🟨"
-        else
-            "⬛"
+        match g with
+        | g when g = s -> "🟩"
+        | g when Set.contains g sharedLetters -> "🟨"
+        | _ -> "⬛"
 
     Seq.zip guess solution
     |> Seq.map (fun (g, s) -> convertLetter g s)
