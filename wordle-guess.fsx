@@ -11,8 +11,8 @@ let wordleGuess guess solution =
         | g when Set.contains g sharedLetters -> "🟨"
         | _ -> "⬛"
 
-    Seq.zip guess solution
-    |> Seq.map (fun (g, s) -> convertLetter g s)
+    (guess, solution)
+    ||> Seq.map2 convertLetter
     |> System.String.Concat
 
 printfn "%A" (wordleGuess "reads" solutionWord)
