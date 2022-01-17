@@ -1,2 +1,2 @@
 # fs-sandbox
-Sandbox to play around with F#
+My own sandbox to play around with F#.
