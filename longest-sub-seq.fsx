@@ -6,16 +6,15 @@ let longestSubSeq s =
             match a with
             | [] -> max longest acc
             | 1 :: tail -> loop longest (acc + 1) tail
-            | _ :: tail -> loop (max longest acc) 0 tail
+            | _ :: tail -> loop (max longest acc) 1 tail
 
-        loop 0 0 s
+        loop 1 1 s
 
     s
     |> List.sort
     |> List.pairwise
     |> List.map (fun (a, b) -> b - a)
     |> longestRun
-    |> (+) 1
 
 let a1 = [ 1; 9; 87; 3; 10; 4; 20; 2; 45 ]
 
